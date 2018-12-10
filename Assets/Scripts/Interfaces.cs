@@ -6,5 +6,4 @@ interface JSONSerializable
 {
 	string ToJSON();
 	object FromJSON(string JSON);
-	string CreateJSONTemplate();
 }

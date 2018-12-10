@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Newtonsoft.Json;
-using System.IO;
 
 public enum ActionType
 {
@@ -55,7 +54,7 @@ public class TileDef : JSONSerializable
 		return JsonConvert.DeserializeObject<TileDef>(JSON);
 	}
 
-	public string CreateJSONTemplate()
+	public static string CreateJSONTemplate()
 	{
 		TileDef template = new TileDef("TemplateID", "TileDefTemplate", "", "", new List<ActionDef>());
 		return JsonConvert.SerializeObject(template);
