@@ -18,6 +18,11 @@ public class GridController : MonoBehaviour
 	private float GridPadding;
 	[SerializeField]
 	private float FloatingHeight;
+    //Talons Bullshit
+    private Vector3 targetNode;
+    private Vector3 direction;
+    private Vector3 velocity;
+    //-------------------
 
 	public void Start()
 	{
@@ -62,7 +67,9 @@ public class GridController : MonoBehaviour
 
 	public void MoveTile()
 	{
-
+        direction = transform.position - targetNode;
+        velocity = direction * Time.deltaTime;
+        transform.Translate(velocity.normalized);
 	}
 
 	public void PlaceTile()
