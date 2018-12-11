@@ -1,7 +1,15 @@
 {
-  "ID": "TemplateID",
-  "DisplayName": "TileDefTemplate",
-  "PrefabID": "",
-  "AbilityID": "",
-  "Actions": []
+  "ID": "TileDef_Template",
+  "DisplayName": "Template",
+  "PrefabID": "Tile_Blank",
+  "AbilityID": "TemplateAbility",
+  "Actions": [
+    {
+      "type": "INVALID",
+      "target": {
+        "x": 0.0,
+        "y": 0.0
+      }
+    }
+  ]
 }

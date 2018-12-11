@@ -5,12 +5,13 @@ using Newtonsoft.Json;
 
 public enum ActionType
 {
-	Move = 0,
-	Jump = 1,
-	Slide = 2,
-	Jumpslide = 3,
-	Strike = 4,
-	Command = 5
+	INVALID = 0,
+	Move = 1,
+	Jump = 2,
+	Slide = 3,
+	Jumpslide = 4,
+	Strike = 5,
+	Command = 6
 }
 
 public class ActionDef
@@ -18,6 +19,14 @@ public class ActionDef
 	public ActionType type { get; private set; }
 
 	public Vector2 target { get; private set; }
+
+	public ActionDef() { }
+
+	public ActionDef(ActionType type, Vector2 target)
+	{
+		this.type = type;
+		this.target = target;
+	}
 }
 
 public class TileDef : JSONSerializable
@@ -52,12 +61,6 @@ public class TileDef : JSONSerializable
 	public object FromJSON(string JSON)
 	{
 		return JsonConvert.DeserializeObject<TileDef>(JSON);
-	}
-
-	public static string CreateJSONTemplate()
-	{
-		TileDef template = new TileDef("TemplateID", "TileDefTemplate", "", "", new List<ActionDef>());
-		return JsonConvert.SerializeObject(template);
 	}
 #endregion JSONSerializable
 
