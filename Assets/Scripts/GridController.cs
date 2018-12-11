@@ -30,6 +30,9 @@ public class GridController : MonoBehaviour
 		float spacing = (nodeMesh.bounds.size.x * nodeMesh.transform.lossyScale.x) + GridPadding;
 		Nodes = new Node[6,6];
 
+		Nodes[0, 0] = StartingNode.GetComponent<Node>();
+		Nodes[0, 0].SetGridPosition(Vector2.zero);
+
 		float xPos = StartingNode.transform.position.x;
 		float zStartPos = StartingNode.transform.position.z;
 		for(int i = 0; i < 6; i++)
@@ -38,6 +41,13 @@ public class GridController : MonoBehaviour
 
 			for(int j = 0; j < 6; j++)
 			{
+				// Index [0, 0] is already placed for our nodes so we wanna skip over this
+				if(i == 0 && j == 0)
+				{
+					zPos += spacing;
+					continue;
+				}
+				
 				Node newNode = Instantiate<GameObject>(NodePrefab, new Vector3(xPos, FloatingHeight, zPos), Quaternion.identity, NodeParent).GetComponent<Node>();
 				newNode.SetGridPosition(new Vector2(i, j));
 
